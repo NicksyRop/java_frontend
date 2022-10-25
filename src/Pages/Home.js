@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 export const Home = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
+
+  const loadUsers = async () => {
+    const results = await axios.get("http://localhost:8090/users");
+    console.log(results);
+  };
   return (
     <div className="container">
       <div className="py-4">
@@ -28,7 +39,7 @@ export const Home = () => {
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
+              <td col="2">Larry the Bird</td>
               <td>@twitter</td>
             </tr>
           </tbody>
